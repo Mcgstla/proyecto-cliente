@@ -1,0 +1,61 @@
+<nav class="navbar bg-primary mb-3" data-bs-theme="dark">
+  <!--Barra de navegación azul con margen inferior y tema oscuro-->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <!--Con esto la barra se expande en pantallas grandes y tenga fondo claro-->
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">Principal</a>
+      <!--Esto te lleva a la pagina principal-->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!--Este boton aparece en los móviles para abrir y cerrar el menú-->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <!--Empieza la lista de enlaces del menú-->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/productos"
+              >Productos</a
+            >
+            <!--Enlace a la ruta productos-->
+          </li>
+          <li class="nav-item dropdown">
+            <!--Esto cre un submenú donde se muestram varios enlaces-->
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Cesta
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" routerLink="/cesta">Ir a la cesta</a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/datos"
+                  >Datos del Cliente</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/clientes">Registro</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/nosotros">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</nav>

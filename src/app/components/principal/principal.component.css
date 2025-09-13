@@ -1,0 +1,5 @@
+:host {
+  display: block; /*El componente es un bloque*/
+  height: 100vh; /* Ocupa toda la pantalla*/
+  overflow: hidden; /* No hace scroll*/
+}

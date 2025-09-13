@@ -1,0 +1,246 @@
+<div class="bg-gradient-azul">
+  <div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+      <!--Fila centrada-->
+      <div class="col-md-10 col-lg-10">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Rellene sus datos personales para el pedido</h4>
+          </div>
+          <div class="card-body overflow-auto" style="max-height: 75vh">
+            <form
+              #miFormulario="ngForm"
+              (ngSubmit)="agregarElemento(miFormulario)"
+              novalidate
+            >
+              <!--Da acceso al formulario, cuando se hace clic en el botón se llama a esa funcion y desactiva la validación del navegadir para que Angular se cargue-->
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  name="nombre"
+                  [(ngModel)]="nombre"
+                  required
+                  #nombreInput="ngModel"
+                  [class.is-invalid]="
+                    nombreInput.invalid && nombreInput.touched
+                  "
+                  (focus)="infoPedido()"
+                />
+                <div class="invalid-feedback">El nombre es obligatorio.</div>
+              </div>
+              <div class="mb-3">
+                <label for="apellidos" class="form-label">Apellidos *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="apellidos"
+                  name="apellidos"
+                  [(ngModel)]="apellidos"
+                  required
+                  #apellidosInput="ngModel"
+                  [class.is-invalid]="
+                    apellidosInput.invalid && apellidosInput.touched
+                  "
+                />
+              </div>
+              <div class="invalid-feedback">
+                Los apellidos son obligatorios.
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Tipo de identificación *</label>
+                <select
+                  class="form-select mb-2"
+                  [(ngModel)]="tipoIdentificacion"
+                  name="tipoId"
+                  required
+                  #tipoIdInput="ngModel"
+                  [class.is-invalid]="
+                    tipoIdInput.invalid && tipoIdInput.touched
+                  "
+                  (change)="actualizarPattern()"
+                >
+                  <option value="" disabled selected>
+                    Seleccione una opción
+                  </option>
+                  <option>DNI</option>
+                  <option>NIE</option>
+                  <option>Pasaporte</option>
+                </select>
+                <div class="invalid-feedback">
+                  El tipo de identificación es obligatorio.
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="identificacion"
+                  name="numIdentificacion"
+                  [attr.pattern]="patternIdentificacion"
+                  required
+                  #identificacionInput="ngModel"
+                  [class.is-invalid]="
+                    identificacionInput.invalid && identificacionInput.touched
+                  "
+                />
+                <div class="invalid-feedback">
+                  {{
+                    tipoIdentificacion === "DNI"
+                      ? "Formato: 8 números y 1 letra (ej: 12345678A)"
+                      : tipoIdentificacion === "NIE"
+                      ? "Formato: 1 letra, 7 números y 1 letra (ej: X1234567A)"
+                      : tipoIdentificacion === "Pasaporte"
+                      ? "Formato: 3 letras y 6 números (ej: ABC123456)"
+                      : "Debe ingresar el número de identificación."
+                  }}
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="direccion" class="form-label">Dirección *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="direccion"
+                  name="direccion"
+                  placeholder="Introduzca su dirección completa"
+                  [(ngModel)]="direccion"
+                  required
+                  #direccionInput="ngModel"
+                  [class.is-invalid]="
+                    direccionInput.invalid && direccionInput.touched
+                  "
+                />
+                <div class="invalid-feedback">La dirección es obligatoria.</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="postal" class="form-label">Código Postal *</label>
+                <input
+                  type="text"
+                  class="form-control no-spin"
+                  id="postal"
+                  name="postal"
+                  [(ngModel)]="cpostal"
+                  pattern="[0-9]*"
+                  required
+                  #cpostalInput="ngModel"
+                  [class.is-invalid]="
+                    cpostalInput.invalid && cpostalInput.touched
+                  "
+                />
+                <div class="invalid-feedback">
+                  El código postal es obligatorio y debe ser numérico.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="pais" class="form-label">País *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="pais"
+                  name="pais"
+                  [(ngModel)]="pais"
+                  required
+                  #paisInput="ngModel"
+                  [class.is-invalid]="paisInput.invalid && paisInput.touched"
+                />
+                <div class="invalid-feedback">El país es obligatorio.</div>
+              </div>
+              <div class="mb-3">
+                <label for="provincia" class="form-label">Provincia *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="provincia"
+                  name="provincia"
+                  [(ngModel)]="provincia"
+                  required
+                  #provinciaInput="ngModel"
+                  [class.is-invalid]="
+                    provinciaInput.invalid && provinciaInput.touched
+                  "
+                />
+                <div class="invalid-feedback">La provincia es obligatoria.</div>
+              </div>
+              <div class="mb-3">
+                <label for="localidad" class="form-label">Municipio *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="municipio"
+                  name="municipio"
+                  [(ngModel)]="municipio"
+                  required
+                  #municipioInput="ngModel"
+                  [class.is-invalid]="
+                    municipioInput.invalid && municipioInput.touched
+                  "
+                />
+                <div class="invalid-feedback">El municipio es obligatorio.</div>
+              </div>
+              <div class="mb-3">
+                <label for="correo" class="form-label">Email *</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="name@example.com"
+                  [(ngModel)]="email"
+                  required
+                  #emailInput="ngModel"
+                  [class.is-invalid]="emailInput.invalid && emailInput.touched"
+                />
+                <div class="invalid-feedback">
+                  El correo electrónico es obligatorio.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono *</label>
+                <input
+                  type="text"
+                  class="form-control no-spin"
+                  id="telefono"
+                  name="telefono"
+                  [(ngModel)]="telefono"
+                  pattern="[0-9]*"
+                  required
+                  #telefonoInput="ngModel"
+                  [class.is-invalid]="
+                    telefonoInput.invalid && telefonoInput.touched
+                  "
+                />
+                <div class="invalid-feedback">
+                  El teléfono es obligatorio y debe ser numérico.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="comentario" class="form-label"
+                  >Comentario (opcional)</label
+                >
+                <textarea
+                  class="form-control"
+                  id="comentario"
+                  name="comentario"
+                  placeholder="Introduza lo que desee comentarnos..."
+                  rows="3"
+                  [(ngModel)]="comentarios"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="miFormulario.invalid"
+              >
+                Guardar datos
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.bg-gradient-azul {
+  background: linear-gradient(
+    to bottom right,
+    #cfe9ff,
+    #e6f3ff
+  ); /*Color de fondo degradado de azul claro a un azul más claro aún*/
+  min-height: 100vh; /*Ocupa la altura total visible del navegador*/
+  padding: 2rem; /*Agrega espacio interno*/
+  color: #003366;
+  border-radius: 1rem; /* Bordes redondeados */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin: 1rem; /* Espaciado exterior */
+}

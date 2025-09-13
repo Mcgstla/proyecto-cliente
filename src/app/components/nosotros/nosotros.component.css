@@ -1,0 +1,8 @@
+.contacto-foto {
+  background-image: url(https://st4.depositphotos.com/1008648/22640/i/450/depositphotos_226405696-stock-photo-businessman-blurred-background-using-thin.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  border-radius: 15px 0 0 15px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}

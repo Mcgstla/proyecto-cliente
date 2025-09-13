@@ -1,0 +1,5 @@
+.volver-btn {
+  transition: all 0.3s ease; /*Animación suave*/
+  transform: translateY(0); /*Posición original del botón*/
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /*Aplicación de sombra*/
+}
