@@ -1,0 +1,52 @@
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+/coverage
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+
+# System files
+.DS_Store
+Thumbs.db
+/connect.lock
+/libpeerconnection.log
+testem.log
+/typings
+
+# Node modules and dependency files
+/node_modules/
+/package-lock.json
+/yarn.lock
+npm-debug.log*
+yarn-error.log*
+
+# Environment files
+/.env
+
+# Angular CLI and build artefacts
+/.angular-cli.json
+/.ng/
+/.angular/
+/e2e/test-output/
+
+# TypeScript cache
+*.tsbuildinfo
+
+
